@@ -249,15 +249,17 @@
             color: var(--kl-blue);
             cursor: pointer;
             user-select: none;
-            line-height: 1;
+            width: 40px;
+            text-align: center;
+            font-weight: bold;
         }
 
         .hamburger-icon::after { content: '☰'; }
-        #menu-toggle:checked + .hamburger-icon::after { content: '✕'; font-size: 2.5rem; }
+        #menu-toggle:checked + .hamburger-icon::after { content: '✕'; font-size: 2.5rem; line-height: 1;}
 
         /* MOBILE "PANCAKE" STYLES */
         @media (max-width: 768px) {
-            .hamburger-icon { display: block; } /* Show icon on mobile */
+            .hamburger-icon { display: block; }
 
             .nav-links {
                 display: none; 
@@ -282,12 +284,29 @@
 
             .nav-links a { margin-left: 0; }
 
+            /* --- FIX: Mobile Dropdown Links Always Visible --- */
+            .dropbtn {
+                display: block;
+                color: var(--kl-blue);
+                margin: 10px 0 5px 0;
+                pointer-events: none; /* Prevents touchscreen confusion */
+            }
+
             .dropdown-content {
+                display: block !important; /* Force sub-links to show inside the pancake menu */
                 position: static;
                 box-shadow: none;
                 border-top: none;
-                background: var(--kl-light);
+                background: #fdfdfd; /* Very subtle background shift */
+                padding: 5px 0;
             }
+
+            .dropdown-content a {
+                padding: 8px 0;
+                font-size: 0.95rem;
+                color: #555;
+            }
+            /* ------------------------------------------------- */
 
             .hero h1 { font-size: 2.2rem; } 
             section { padding: 60px 5%; }

@@ -51,7 +51,7 @@
 
         .legacy-banner a:hover { color: var(--kl-blue); }
 
-        /* NAVIGATION - Reverted to your exact specifications */
+        /* NAVIGATION */
         nav {
             background: #ffffff;
             border-bottom: 3px solid var(--kl-blue);
@@ -124,7 +124,6 @@
         section {
             padding: 80px 10%;
             border-bottom: 1px solid #eee;
-            /* FIX: Offsets the jump links so the sticky header doesn't cover the titles */
             scroll-margin-top: 110px; 
         }
 
@@ -210,7 +209,7 @@
             border: 1px solid #ddd; 
             min-width: 320px;
             max-width: 450px;
-            flex: 1; /* Allows them to sit side-by-side cleanly */
+            flex: 1; 
         }
 
         /* DONATE CARDS */
@@ -250,30 +249,18 @@
             color: var(--kl-blue);
             cursor: pointer;
             user-select: none;
-            width: 40px;
-            text-align: center;
-            font-weight: bold;
+            line-height: 1;
         }
 
-        /* Sets the default icon to the Pancake/Hamburger */
         .hamburger-icon::after { content: '☰'; }
-        
-        /* Morphs the icon to an 'X' when checked */
-        #menu-toggle:checked ~ .hamburger-icon::after { content: '✕'; font-size: 2.5rem; line-height: 1;}
+        #menu-toggle:checked + .hamburger-icon::after { content: '✕'; font-size: 2.5rem; }
 
         /* MOBILE "PANCAKE" STYLES */
         @media (max-width: 768px) {
-            nav {
-                height: auto; 
-                flex-direction: column; 
-                padding: 15px 5%;
-            }
-
-            .logo-container { margin-bottom: 15px; }
             .hamburger-icon { display: block; } /* Show icon on mobile */
 
             .nav-links {
-                display: none; /* Hide standard links */
+                display: none; 
                 flex-direction: column;
                 position: absolute;
                 top: 100px; 
@@ -285,7 +272,6 @@
                 box-shadow: 0 10px 15px rgba(0,0,0,0.1);
             }
 
-            /* Open menu logic */
             #menu-toggle:checked ~ .nav-links { display: flex; }
 
             .nav-links a, .dropdown {
@@ -309,7 +295,7 @@
     </style>
 </head>
 
-<body>
+<body id="top">
 
     <div class="legacy-banner">
         ⚠️ <strong>LEGACY EDITION:</strong> This version (v26.02.6.3) is no longer under active development.<br>
@@ -318,7 +304,7 @@
 
     <nav>
         <div class="logo-container">
-            <a href="#home" onclick="document.getElementById('menu-toggle').checked=false;">
+            <a href="#top" onclick="document.getElementById('menu-toggle').checked=false;">
                 <img src="KeyLock_logo_Light_240pix.png" alt="KeyLock Logo">
             </a>
         </div>

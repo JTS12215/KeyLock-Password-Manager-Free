@@ -69,7 +69,7 @@
             font-size: 1.1rem;
         }
 
-        /* DROPDOWN LOGIC (Desktop) */
+        /* DROPDOWN LOGIC */
         .dropdown { position: relative; display: inline-block; }
         .dropdown-content {
             display: none;
@@ -93,19 +93,25 @@
         }
         .dropdown:hover .dropdown-content { display: block; }
 
-        /* HIDE CHECKBOX & HAMBURGER ON DESKTOP */
+        /* PANCAKE MENU TOGGLE (Hidden on Desktop) */
         #menu-toggle { display: none; }
-        .hamburger-icon { display: none; cursor: pointer; font-size: 2rem; color: var(--kl-blue); }
+        .hamburger-icon {
+            display: none;
+            font-size: 2rem;
+            color: var(--kl-blue);
+            cursor: pointer;
+            user-select: none;
+        }
 
-        /* MOBILE MENU STYLES */
+        /* MOBILE "PANCAKE" STYLES */
         @media (max-width: 768px) {
-            .hamburger-icon { display: block; } /* Show the "Pancake" icon */
+            .hamburger-icon { display: block; }
 
             .nav-links {
-                display: none; /* Hide links by default on mobile */
+                display: none; /* Hidden until toggled */
                 flex-direction: column;
                 position: absolute;
-                top: 100px; /* Right under the nav bar */
+                top: 100px;
                 left: 0;
                 width: 100%;
                 background: #fff;
@@ -114,7 +120,7 @@
                 box-shadow: 0 10px 15px rgba(0,0,0,0.1);
             }
 
-            /* Show menu when checkbox is checked */
+            /* The "Magic" Toggle */
             #menu-toggle:checked ~ .nav-links {
                 display: flex;
             }
@@ -128,14 +134,11 @@
             .nav-links a { margin-left: 0; }
 
             .dropdown-content {
-                position: static; /* Make dropdown push content down on mobile */
+                position: static;
                 box-shadow: none;
                 border-top: none;
                 background: var(--kl-light);
             }
-            
-            /* On mobile, we show the dropdown content differently */
-            .dropdown:hover .dropdown-content { display: block; }
 
             .hero h1 { font-size: 2.2rem; }
             section { padding: 60px 5%; }
@@ -179,7 +182,6 @@
         </div>
 
         <input type="checkbox" id="menu-toggle">
-        
         <label for="menu-toggle" class="hamburger-icon">☰</label>
 
         <div class="nav-links">
@@ -197,5 +199,83 @@
         </div>
     </nav>
 
-    </body>
-</html>
+    <section id="home" class="hero">
+        <span style="background: var(--kl-blue); color: #fff; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem;">OPEN SOURCE (GPLv3)</span>
+        <h1>Stop Trusting their Cloud <br>With Your Secrets.</h1>
+        <p>KeyLock lets you store your encrypted vault locally or in your own public cloud—making your data a "needle in a haystack."</p>
+        <a href="#download" class="btn">Download v26.02.6.3</a>
+        <a href="https://github.com/JTS12215/keylocksoftware.com" class="btn btn-outline">View Source Code</a>
+        
+        <div class="feature-grid">
+            <div class="card">
+                <h3>Cryptographic Salt & Key Derivation</h3>
+                <p>We utilize PBKDF2 key derivation with a unique salt for every vault to shield against Brute-Force attacks.</p>
+            </div>
+            <div class="card">
+                <h3>Zero-Knowledge Security</h3>
+                <p>Your master password is the only key. We never have access to your data. You have absolute control.</p>
+            </div>
+            <div class="card">
+                <h3>Fernet (AES) Encryption</h3>
+                <p>Your vault is locked behind industry-standard encryption, ensuring data remains unreadable to anyone but you.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="screenshots">
+        <h2>Interface Gallery</h2>
+        <div class="gallery-container">
+            <div class="gallery-item"><img src="screenshots/KeyLock_Main_Screen.png" alt="Main Screen"><p>Main Dashboard</p></div>
+            <div class="gallery-item"><img src="screenshots/Login_Screen.png" alt="Login"><p>Login Screen</p></div>
+            <div class="gallery-item"><img src="screenshots/KeyLock_Data_Entry_Screen.png" alt="Entry"><p>Data Entry Screen</p></div>
+            <div class="gallery-item"><img src="screenshots/Settings.png" alt="Settings"><p>Settings Screen</p></div>
+            <div class="gallery-item"><img src="screenshots/Password_Generator.png" alt="Generator"><p>Password Generator</p></div>
+            <div class="gallery-item"><img src="screenshots/Import_Mapping.png" alt="Import"><p>Import Auto Mapping</p></div>
+        </div>
+    </section>
+
+    <section id="download" style="background-color: var(--kl-light);">
+        <h2>Download KeyLock</h2>
+        <div style="text-align: center;">
+            <div class="download-card">
+                <p><strong>Windows Installer</strong></p>
+                <a href="https://github.com/JTS12215/keylocksoftware.com/releases/download/v26.02.6.3/KeyLock_Setup_v26.02.6.3.exe" class="btn">Download Installer</a>
+                <br><small style="word-break: break-all; color:#888;">SHA-256: 91A2DE154394C465D7A9718EC7D0E8F007D881F2595E23FD7A7C9A777D271900</small>
+            </div>
+            <div class="download-card">
+                <p><strong>Standalone Executable</strong></p>
+                <a href="https://github.com/JTS12215/keylocksoftware.com/releases/download/v26.02.6.3/KeyLock.Password.Manager.exe" class="btn">Download .exe</a>
+                <br><small style="word-break: break-all; color:#888;">SHA-256: C9A6E1C8EA713B3B922D539F4AD829375A7112F86CB6C8DD891898189DCA7AA0</small>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>The KeyLock Mission</h2>
+        <div style="max-width: 800px; margin: 0 auto; text-align: left;">
+            <p>KeyLock was born from a simple necessity: <strong>Absolute Data Sovereignty.</strong></p>
+            <p style="margin-top:20px;">By removing the centralized commercial cloud, we remove the incentive for hackers. Your vault is your own. Whether you keep it on a local machine, thumb drive, Google or Dropbox, you are the only one with the key.</p>
+        </div>
+    </section>
+
+    <section id="donate" style="background-color: var(--kl-light);">
+        <h2>Support KeyLock</h2>
+        <div class="donate-container">
+            <div class="donate-card">
+                <h3>PayPal</h3>
+                <form action="https://www.paypal.com/donate" method="post" target="_top">
+                    <input type="hidden" name="hosted_button_id" value="HM9NTSUVGEVMN" />
+                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" name="submit" alt="Donate with PayPal" />
+                </form>
+            </div>
+            <div class="donate-card">
+                <h3>Venmo</h3>
+                <p>Search for <strong>@JohnStone996</strong> in your Venmo app.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <h2>About KeyLock (Legacy)</h2>
+        <p>Security shouldn't be a subscription service or a cloud-based risk.</p>
+        <div style="margin-top: 20

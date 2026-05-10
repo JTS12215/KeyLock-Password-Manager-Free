@@ -7,7 +7,12 @@
     <title>KeyLock | Legacy Open Source Edition</title>
     <style>
         /* CORE STYLES */
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         :root {
             --kl-blue: #0056b3;
             --kl-dark: #333;
@@ -15,7 +20,9 @@
             --kl-warning: #ffc107;
         }
 
-        html { scroll-behavior: smooth; }
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
@@ -24,7 +31,7 @@
             background-color: #fff;
         }
 
-        /* LEGACY BANNER */
+        /* NEW LEGACY BANNER */
         .legacy-banner {
             background-color: var(--kl-warning);
             color: #000;
@@ -33,9 +40,18 @@
             font-size: 0.95rem;
             border-bottom: 1px solid #e0a800;
         }
-        .legacy-banner a { color: #000; font-weight: bold; text-decoration: underline; margin-left: 10px; }
 
-        /* NAVIGATION - Desktop First */
+        .legacy-banner strong { font-weight: 800; }
+        .legacy-banner a {
+            color: #000;
+            font-weight: bold;
+            text-decoration: underline;
+            margin-left: 10px;
+        }
+
+        .legacy-banner a:hover { color: var(--kl-blue); }
+
+        /* NAVIGATION - Reverted to your exact specifications */
         nav {
             background: #ffffff;
             border-bottom: 3px solid var(--kl-blue);
@@ -55,7 +71,6 @@
             display: block;
         }
 
-        /* DESKTOP NAV LINKS */
         .nav-links {
             display: flex;
             align-items: center;
@@ -67,10 +82,19 @@
             font-weight: 700;
             margin-left: 25px;
             font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover, .dropdown:hover .dropbtn {
+            color: var(--kl-blue);
         }
 
         /* DROPDOWN LOGIC */
-        .dropdown { position: relative; display: inline-block; }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
         .dropdown-content {
             display: none;
             position: absolute;
@@ -83,6 +107,7 @@
             left: 25px;
             padding: 10px 0;
         }
+
         .dropdown-content a {
             color: var(--kl-dark);
             padding: 12px 20px;
@@ -91,99 +116,144 @@
             font-size: 1rem;
             border-bottom: 1px solid #eee;
         }
+
+        .dropdown-content a:last-child { border-bottom: none; }
         .dropdown:hover .dropdown-content { display: block; }
 
-        /* PANCAKE MENU TOGGLE (Hidden on Desktop) */
-        #menu-toggle { display: none; }
-        .hamburger-icon {
-            display: none;
-            font-size: 2rem;
-            color: var(--kl-blue);
-            cursor: pointer;
-            user-select: none;
+        /* UNIVERSAL SECTION STYLING */
+        section {
+            padding: 80px 10%;
+            border-bottom: 1px solid #eee;
         }
 
-        /* MOBILE "PANCAKE" STYLES */
-        @media (max-width: 768px) {
-            .hamburger-icon { display: block; }
-
-            .nav-links {
-                display: none; /* Hidden until toggled */
-                flex-direction: column;
-                position: absolute;
-                top: 100px;
-                left: 0;
-                width: 100%;
-                background: #fff;
-                border-bottom: 3px solid var(--kl-blue);
-                padding: 20px 0;
-                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-            }
-
-            /* The "Magic" Toggle */
-            #menu-toggle:checked ~ .nav-links {
-                display: flex;
-            }
-
-            .nav-links a, .dropdown {
-                margin: 10px 0;
-                width: 100%;
-                text-align: center;
-            }
-
-            .nav-links a { margin-left: 0; }
-
-            .dropdown-content {
-                position: static;
-                box-shadow: none;
-                border-top: none;
-                background: var(--kl-light);
-            }
-
-            .hero h1 { font-size: 2.2rem; }
-            section { padding: 60px 5%; }
+        /* HERO SECTION */
+        .hero {
+            text-align: center;
+            background: linear-gradient(180deg, #fff 0%, var(--kl-light) 100%);
         }
 
-        /* SECTION STYLES */
-        section { padding: 80px 10%; border-bottom: 1px solid #eee; }
-        .hero { text-align: center; background: linear-gradient(180deg, #fff 0%, var(--kl-light) 100%); }
-        h1 { font-size: 3.5rem; color: #000; margin-bottom: 20px; }
-
-        .feature-grid, .gallery-container, .donate-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 40px 0; }
-        .card, .gallery-item, .donate-card, .download-card {
-            flex: 1; min-width: 300px; max-width: 400px; padding: 40px;
-            background: #fff; border: 1px solid #eee; border-radius: 12px;
-            text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-        .gallery-item img { width: 100%; border-radius: 8px; border: 1px solid #ddd; }
+        .hero h1 { font-size: 3.5rem; color: #000; line-height: 1.2; }
+        .hero p { font-size: 1.4rem; color: #555; max-width: 800px; margin: 20px auto 40px; }
 
         /* BUTTONS */
         .btn {
-            display: inline-block; background: var(--kl-blue); color: white !important;
-            padding: 15px 35px; border-radius: 5px; text-decoration: none; font-weight: bold; margin: 10px;
+            display: inline-block;
+            background: var(--kl-blue);
+            color: white !important;
+            padding: 15px 35px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px;
         }
-        .btn-outline { background: transparent; color: var(--kl-blue) !important; border: 2px solid var(--kl-blue); }
 
-        footer { background: var(--kl-blue); color: white; text-align: center; padding: 60px 10%; }
-        footer a { color: white; text-decoration: none; margin: 0 10px; }
+        .btn-outline {
+            background: transparent;
+            color: var(--kl-blue) !important;
+            border: 2px solid var(--kl-blue);
+        }
+
+        /* FEATURE GRID */
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 50px 0;
+        }
+
+        .card {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            padding: 40px;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        /* SCREENSHOTS / GALLERY */
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 40px 0;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            flex: 1;
+            min-width: 350px;
+            max-width: 450px;
+            text-align: center;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-item p { margin-top: 15px; font-weight: 600; color: #555; }
+
+        /* DOWNLOAD CARDS */
+        .download-card {
+            background: var(--kl-light); 
+            padding: 40px; 
+            border-radius: 15px; 
+            display: inline-block; 
+            border: 1px solid #ddd; 
+            margin: 15px; 
+            min-width: 320px;
+            max-width: 450px;
+        }
+
+        /* DONATE CARDS */
+        .donate-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .donate-card {
+            flex: 1;
+            min-width: 300px;
+            max-width: 450px;
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        footer {
+            background: var(--kl-blue);
+            color: white;
+            text-align: center;
+            padding: 40px;
+        }
     </style>
 </head>
 
 <body>
 
     <div class="legacy-banner">
-        ⚠️ <strong>LEGACY EDITION:</strong> v26.02.6.3 is no longer under active development.
-        <a href="https://keylocksoftware.com">Learn about KeyLock Pro</a>
+        ⚠️ <strong>LEGACY EDITION:</strong> This version (v26.02.6.3) is no longer under active development.<br>
+        <a href="https://keylocksoftware.com">Learn about the upcoming KeyLock Password Manager Pro</a>
     </div>
 
     <nav>
         <div class="logo-container">
-            <a href="#home"><img src="KeyLock_logo_Light_240pix.png" alt="KeyLock Logo"></a>
+            <a href="#home">
+                <img src="KeyLock_logo_Light_240pix.png" alt="KeyLock Logo">
+            </a>
         </div>
-
-        <input type="checkbox" id="menu-toggle">
-        <label for="menu-toggle" class="hamburger-icon">☰</label>
-
         <div class="nav-links">
             <a href="#screenshots">Screenshots</a>
             <a href="#download">Download</a>
@@ -200,82 +270,113 @@
     </nav>
 
     <section id="home" class="hero">
-        <span style="background: var(--kl-blue); color: #fff; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem;">OPEN SOURCE (GPLv3)</span>
+        <span style="background: var(--kl-blue); color: #fff; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem;">
+            OPEN SOURCE (GPLv3)
+        </span>
         <h1>Stop Trusting their Cloud <br>With Your Secrets.</h1>
-        <p>KeyLock lets you store your encrypted vault locally or in your own public cloud—making your data a "needle in a haystack."</p>
+        <p>Commercial Password Managers store millions of password vaults in one place, creating a massive target for
+            hackers. KeyLock lets you store your encrypted vault locally or in your own public cloud.</p>
+
         <a href="#download" class="btn">Download v26.02.6.3</a>
         <a href="https://github.com/JTS12215/keylocksoftware.com" class="btn btn-outline">View Source Code</a>
-        
+
         <div class="feature-grid">
             <div class="card">
                 <h3>Cryptographic Salt & Key Derivation</h3>
-                <p>We utilize PBKDF2 key derivation with a unique salt for every vault to shield against Brute-Force attacks.</p>
+                <p>We utilize PBKDF2 key derivation with a unique salt for every vault. This adds a mathematical shield against Brute-Force attacks.</p>
             </div>
             <div class="card">
                 <h3>Zero-Knowledge Security</h3>
-                <p>Your master password is the only key. We never have access to your data. You have absolute control.</p>
+                <p>Your master password is the only key. We don't have a "reset" button because we never have access to your data.</p>
             </div>
             <div class="card">
                 <h3>Fernet (AES) Encryption</h3>
-                <p>Your vault is locked behind industry-standard encryption, ensuring data remains unreadable to anyone but you.</p>
+                <p>Your vault is locked behind industry-standard encryption, ensuring your data remains unreadable to anyone but you.</p>
             </div>
         </div>
     </section>
 
-    <section id="screenshots">
-        <h2>Interface Gallery</h2>
+    <section id="screenshots" style="text-align: center;">
+        <h1 style="font-size: 2.5rem; color: var(--kl-blue); margin-bottom: 10px;">Interface Gallery</h1>
+        <p>A closer look at the KeyLock user experience.</p>
         <div class="gallery-container">
-            <div class="gallery-item"><img src="screenshots/KeyLock_Main_Screen.png" alt="Main Screen"><p>Main Dashboard</p></div>
+            <div class="gallery-item"><img src="screenshots/KeyLock_Main_Screen.png" alt="Dashboard"><p>Main Dashboard</p></div>
             <div class="gallery-item"><img src="screenshots/Login_Screen.png" alt="Login"><p>Login Screen</p></div>
-            <div class="gallery-item"><img src="screenshots/KeyLock_Data_Entry_Screen.png" alt="Entry"><p>Data Entry Screen</p></div>
+            <div class="gallery-item"><img src="screenshots/KeyLock_Data_Entry_Screen.png" alt="Data Entry"><p>Data Entry Screen</p></div>
             <div class="gallery-item"><img src="screenshots/Settings.png" alt="Settings"><p>Settings Screen</p></div>
             <div class="gallery-item"><img src="screenshots/Password_Generator.png" alt="Generator"><p>Password Generator</p></div>
-            <div class="gallery-item"><img src="screenshots/Import_Mapping.png" alt="Import"><p>Import Auto Mapping</p></div>
+            <div class="gallery-item"><img src="screenshots/Import_Mapping.png" alt="Mapping"><p>Import Auto Mapping</p></div>
         </div>
     </section>
 
-    <section id="download" style="background-color: var(--kl-light);">
-        <h2>Download KeyLock</h2>
-        <div style="text-align: center;">
-            <div class="download-card">
-                <p><strong>Windows Installer</strong></p>
-                <a href="https://github.com/JTS12215/keylocksoftware.com/releases/download/v26.02.6.3/KeyLock_Setup_v26.02.6.3.exe" class="btn">Download Installer</a>
-                <br><small style="word-break: break-all; color:#888;">SHA-256: 91A2DE154394C465D7A9718EC7D0E8F007D881F2595E23FD7A7C9A777D271900</small>
-            </div>
-            <div class="download-card">
-                <p><strong>Standalone Executable</strong></p>
-                <a href="https://github.com/JTS12215/keylocksoftware.com/releases/download/v26.02.6.3/KeyLock.Password.Manager.exe" class="btn">Download .exe</a>
-                <br><small style="word-break: break-all; color:#888;">SHA-256: C9A6E1C8EA713B3B922D539F4AD829375A7112F86CB6C8DD891898189DCA7AA0</small>
-            </div>
+    <section id="download" style="text-align: center; background-color: var(--kl-light);">
+        <h1 style="color: var(--kl-blue); font-size: 2.5rem; margin-bottom: 20px;">Download KeyLock</h1>
+        <p style="margin-bottom: 40px;">Choose your preferred version. All releases include SHA-256 checksums.</p>
+        
+        <div class="download-card">
+            <p><strong>Recommended: Windows Installer</strong></p>
+            <a href="https://github.com/JTS12215/keylocksoftware.com/releases/download/v26.02.6.3/KeyLock_Setup_v26.02.6.3.exe" class="btn">Download Installer</a>
+            <br><small style="word-break: break-all; color: #888;">SHA-256: 91A2DE154394C465D7A9718EC7D0E8F007D881F2595E23FD7A7C9A777D271900</small>
+        </div>
+
+        <div class="download-card">
+            <p><strong>Advanced: Standalone Executable</strong></p>
+            <a href="https://github.com/JTS12215/keylocksoftware.com/releases/download/v26.02.6.3/KeyLock.Password.Manager.exe" class="btn">Download Standalone .exe</a>
+            <br><small style="word-break: break-all; color: #888;">SHA-256: C9A6E1C8EA713B3B922D539F4AD829375A7112F86CB6C8DD891898189DCA7AA0</small>
         </div>
     </section>
 
-    <section id="about">
-        <h2>The KeyLock Mission</h2>
-        <div style="max-width: 800px; margin: 0 auto; text-align: left;">
-            <p>KeyLock was born from a simple necessity: <strong>Absolute Data Sovereignty.</strong></p>
-            <p style="margin-top:20px;">By removing the centralized commercial cloud, we remove the incentive for hackers. Your vault is your own. Whether you keep it on a local machine, thumb drive, Google or Dropbox, you are the only one with the key.</p>
-        </div>
+    <section id="about" style="max-width: 900px; margin: 0 auto;">
+        <h1 style="color: var(--kl-blue); font-size: 2.5rem; margin-bottom: 30px;">The KeyLock Mission</h1>
+        <p style="font-size: 1.2rem; margin-bottom: 20px;">
+            In an era where personal data is treated as a commodity, KeyLock was born from a simple necessity:
+            <strong>Absolute Data Sovereignty.</strong>
+        </p>
+        <h3 style="margin: 30px 0 15px; color: var(--kl-blue);">Why Local-First?</h3>
+        <p>KeyLock was born from a simple idea: Your data should never be a target. By removing the centralized
+            commercial cloud, we remove the incentive for hackers. Your vault is your own. Whether you keep it on a
+            local machine, thumb drive, Google or Dropbox, you are the only one with the key.</p>
+        <h3 style="margin: 30px 0 15px; color: var(--kl-blue);">Transparent & Open Source</h3>
+        <p>KeyLock is free to use, redistribute and open for inspection. You can review our source code on GitHub or
+            get started today by visiting the User Manual.</p>
     </section>
 
-    <section id="donate" style="background-color: var(--kl-light);">
-        <h2>Support KeyLock</h2>
+    <section id="donate" style="text-align: center; background-color: var(--kl-light);">
+        <h1 style="color: var(--kl-blue); font-size: 2.5rem; margin-bottom: 20px;">Support KeyLock</h1>
+        <p style="max-width: 650px; margin: 0 auto; color: #555;">KeyLock is an independent, open-source project. Your support helps maintain the development of local-first privacy tools.</p>
+        
         <div class="donate-container">
             <div class="donate-card">
-                <h3>PayPal</h3>
+                <h3 style="color: #0070ba; margin-bottom: 20px;">Donate via PayPal</h3>
                 <form action="https://www.paypal.com/donate" method="post" target="_top">
                     <input type="hidden" name="hosted_button_id" value="HM9NTSUVGEVMN" />
-                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" name="submit" alt="Donate with PayPal" />
+                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" name="submit" alt="Donate with PayPal button" />
                 </form>
+                <p style="font-size: 0.85rem; color: #777; margin-top: 15px;">Safe & Secure Checkout</p>
             </div>
+
             <div class="donate-card">
-                <h3>Venmo</h3>
-                <p>Search for <strong>@JohnStone996</strong> in your Venmo app.</p>
+                <h3 style="color: #3d95ce; margin-bottom: 20px;">Donate via Venmo</h3>
+                <div style="background: var(--kl-light); padding: 25px; border-radius: 10px; border-left: 4px solid #3d95ce; text-align: left;">
+                    <p style="font-weight: bold; margin-bottom: 10px;">Venmo Donation:</p>
+                    <p>On your mobile device, search for <strong>@JohnStone996</strong> in the Venmo app.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer>
+    <footer id="footer">
         <h2>About KeyLock (Legacy)</h2>
-        <p>Security shouldn't be a subscription service or a cloud-based risk.</p>
-        <div style="margin-top: 20
+        <p>We believe that security shouldn't be a subscription service or a cloud-based risk. This open-source edition
+            was built for those who demand absolute control over their data.</p>
+        <div style="margin-top: 20px;">
+            <a href="docs/Legal_Compliance.html" style="color: white; text-decoration: none; margin: 0 10px;">Privacy & Compliance</a> |
+            <a href="https://github.com/JTS12215/keylocksoftware.com" style="color: white; text-decoration: none; margin: 0 10px;">GitHub Source</a>
+        </div>
+        <p style="margin-top: 30px; font-size: 0.8rem; opacity: 0.7;">
+            &copy; 2026 John Stone dba KeyLock Software | Provided as-is under the GPLv3 License
+        </p>
+    </footer>
+
+</body>
+</html>

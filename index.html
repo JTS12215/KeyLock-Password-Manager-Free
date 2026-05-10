@@ -7,12 +7,7 @@
     <title>KeyLock | Legacy Open Source Edition</title>
     <style>
         /* CORE STYLES */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         :root {
             --kl-blue: #0056b3;
             --kl-dark: #333;
@@ -20,9 +15,7 @@
             --kl-warning: #ffc107;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
@@ -31,7 +24,7 @@
             background-color: #fff;
         }
 
-        /* NEW LEGACY BANNER */
+        /* LEGACY BANNER */
         .legacy-banner {
             background-color: var(--kl-warning);
             color: #000;
@@ -41,17 +34,9 @@
             border-bottom: 1px solid #e0a800;
         }
 
-        .legacy-banner strong { font-weight: 800; }
-        .legacy-banner a {
-            color: #000;
-            font-weight: bold;
-            text-decoration: underline;
-            margin-left: 10px;
-        }
+        .legacy-banner a { color: #000; font-weight: bold; text-decoration: underline; margin-left: 10px; }
 
-        .legacy-banner a:hover { color: var(--kl-blue); }
-
-        /* NAVIGATION - Reverted to your exact specifications */
+        /* NAVIGATION - Desktop First */
         nav {
             background: #ffffff;
             border-bottom: 3px solid var(--kl-blue);
@@ -82,19 +67,10 @@
             font-weight: 700;
             margin-left: 25px;
             font-size: 1.1rem;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover, .dropdown:hover .dropbtn {
-            color: var(--kl-blue);
         }
 
         /* DROPDOWN LOGIC */
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
+        .dropdown { position: relative; display: inline-block; }
         .dropdown-content {
             display: none;
             position: absolute;
@@ -107,7 +83,6 @@
             left: 25px;
             padding: 10px 0;
         }
-
         .dropdown-content a {
             color: var(--kl-dark);
             padding: 12px 20px;
@@ -116,127 +91,89 @@
             font-size: 1rem;
             border-bottom: 1px solid #eee;
         }
-
-        .dropdown-content a:last-child { border-bottom: none; }
         .dropdown:hover .dropdown-content { display: block; }
 
         /* UNIVERSAL SECTION STYLING */
-        section {
-            padding: 80px 10%;
-            border-bottom: 1px solid #eee;
-        }
+        section { padding: 80px 10%; border-bottom: 1px solid #eee; }
 
         /* HERO SECTION */
         .hero {
             text-align: center;
             background: linear-gradient(180deg, #fff 0%, var(--kl-light) 100%);
         }
+        .hero h1 { font-size: 3.5rem; color: #000; margin-bottom: 20px; }
 
-        .hero h1 { font-size: 3.5rem; color: #000; line-height: 1.2; }
-        .hero p { font-size: 1.4rem; color: #555; max-width: 800px; margin: 20px auto 40px; }
+        .feature-grid, .gallery-container, .donate-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 40px 0; }
+        .card, .gallery-item, .donate-card, .download-card {
+            flex: 1; min-width: 300px; max-width: 400px; padding: 40px;
+            background: #fff; border: 1px solid #eee; border-radius: 12px;
+            text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .gallery-item img { width: 100%; border-radius: 8px; border: 1px solid #ddd; }
 
         /* BUTTONS */
         .btn {
-            display: inline-block;
-            background: var(--kl-blue);
-            color: white !important;
-            padding: 15px 35px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            margin: 10px;
+            display: inline-block; background: var(--kl-blue); color: white !important;
+            padding: 15px 35px; border-radius: 5px; text-decoration: none; font-weight: bold; margin: 10px;
+        }
+        .btn-outline { background: transparent; color: var(--kl-blue) !important; border: 2px solid var(--kl-blue); }
+
+        footer { background: var(--kl-blue); color: white; text-align: center; padding: 60px 10%; }
+        footer a { color: white; text-decoration: none; margin: 0 10px; }
+
+
+        /* ========================================= */
+        /* PANCAKE MENU TOGGLE (Hidden on Desktop)   */
+        /* ========================================= */
+        #menu-toggle { display: none; }
+        .hamburger-icon {
+            display: none;
+            font-size: 2rem;
+            color: var(--kl-blue);
+            cursor: pointer;
+            user-select: none;
         }
 
-        .btn-outline {
-            background: transparent;
-            color: var(--kl-blue) !important;
-            border: 2px solid var(--kl-blue);
-        }
+        /* MOBILE "PANCAKE" STYLES */
+        @media (max-width: 768px) {
+            .hamburger-icon { display: block; } /* Show the hamburger icon */
 
-        /* FEATURE GRID */
-        .feature-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 50px 0;
-        }
+            .nav-links {
+                display: none; /* Hide the standard nav line */
+                flex-direction: column;
+                position: absolute;
+                top: 100px; /* Positions menu right below the 100px nav bar */
+                left: 0;
+                width: 100%;
+                background: #fff;
+                border-bottom: 3px solid var(--kl-blue);
+                padding: 15px 0;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            }
 
-        .card {
-            flex: 1;
-            min-width: 300px;
-            max-width: 400px;
-            padding: 40px;
-            border: 1px solid #eee;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-        }
+            /* The Checkbox Hack Logic */
+            #menu-toggle:checked ~ .nav-links {
+                display: flex;
+            }
 
-        /* SCREENSHOTS / GALLERY */
-        .gallery-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            padding: 40px 0;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+            .nav-links a, .dropdown {
+                margin: 10px 0;
+                width: 100%;
+                text-align: center;
+            }
 
-        .gallery-item {
-            flex: 1;
-            min-width: 350px;
-            max-width: 450px;
-            text-align: center;
-        }
+            .nav-links a { margin-left: 0; }
 
-        .gallery-item img {
-            width: 100%;
-            border-radius: 10px;
-            border: 1px solid #ddd;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
+            /* Fix dropdown to flow correctly inside mobile menu */
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                border-top: none;
+                background: var(--kl-light);
+            }
 
-        .gallery-item p { margin-top: 15px; font-weight: 600; color: #555; }
-
-        /* DOWNLOAD CARDS */
-        .download-card {
-            background: var(--kl-light); 
-            padding: 40px; 
-            border-radius: 15px; 
-            display: inline-block; 
-            border: 1px solid #ddd; 
-            margin: 15px; 
-            min-width: 320px;
-            max-width: 450px;
-        }
-
-        /* DONATE CARDS */
-        .donate-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 40px;
-        }
-
-        .donate-card {
-            flex: 1;
-            min-width: 300px;
-            max-width: 450px;
-            background: #fff;
-            border: 1px solid #ddd;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        footer {
-            background: var(--kl-blue);
-            color: white;
-            text-align: center;
-            padding: 40px;
+            .hero h1 { font-size: 2.5rem; }
+            section { padding: 60px 5%; }
         }
     </style>
 </head>
@@ -254,6 +191,10 @@
                 <img src="KeyLock_logo_Light_240pix.png" alt="KeyLock Logo">
             </a>
         </div>
+
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="hamburger-icon">☰</label>
+
         <div class="nav-links">
             <a href="#screenshots">Screenshots</a>
             <a href="#download">Download</a>

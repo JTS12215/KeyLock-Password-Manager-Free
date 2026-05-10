@@ -259,7 +259,7 @@
 
         /* MOBILE "PANCAKE" STYLES */
         @media (max-width: 768px) {
-            .hamburger-icon { display: block; }
+            .hamburger-icon { display: block; } 
 
             .nav-links {
                 display: none; 
@@ -279,34 +279,40 @@
             .nav-links a, .dropdown {
                 margin: 10px 0;
                 width: 100%;
-                text-align: center;
+                text-align: left; /* Left align the menu wrapper */
             }
 
-            .nav-links a { margin-left: 0; }
+            .nav-links a { 
+                margin-left: 0; 
+                padding-left: 20px; /* Left indent for main links */
+            }
 
-            /* --- FIX: Mobile Dropdown Links Always Visible --- */
+            /* Main Resources Heading inside mobile dropdown */
             .dropbtn {
                 display: block;
                 color: var(--kl-blue);
                 margin: 10px 0 5px 0;
-                pointer-events: none; /* Prevents touchscreen confusion */
+                padding-left: 20px; /* Align with other main links */
+                pointer-events: none; 
+                text-align: left;
             }
 
             .dropdown-content {
-                display: block !important; /* Force sub-links to show inside the pancake menu */
+                display: block !important; 
                 position: static;
                 box-shadow: none;
                 border-top: none;
-                background: #fdfdfd; /* Very subtle background shift */
+                background: #fdfdfd; 
                 padding: 5px 0;
             }
 
+            /* Slightly indented Sub-Menu Links */
             .dropdown-content a {
                 padding: 8px 0;
+                padding-left: 40px; /* Indent sub-links an extra 20px */
                 font-size: 0.95rem;
                 color: #555;
             }
-            /* ------------------------------------------------- */
 
             .hero h1 { font-size: 2.2rem; } 
             section { padding: 60px 5%; }

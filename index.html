@@ -7,7 +7,12 @@
     <title>KeyLock | Legacy Open Source Edition</title>
     <style>
         /* CORE STYLES */
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         :root {
             --kl-blue: #0056b3;
             --kl-dark: #333;
@@ -15,7 +20,9 @@
             --kl-warning: #ffc107;
         }
 
-        html { scroll-behavior: smooth; }
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
@@ -33,9 +40,18 @@
             font-size: 0.95rem;
             border-bottom: 1px solid #e0a800;
         }
-        .legacy-banner a { color: #000; font-weight: bold; text-decoration: underline; margin-left: 10px; }
 
-        /* NAVIGATION - Reverted to your exact specifications */
+        .legacy-banner strong { font-weight: 800; }
+        .legacy-banner a {
+            color: #000;
+            font-weight: bold;
+            text-decoration: underline;
+            margin-left: 10px;
+        }
+
+        .legacy-banner a:hover { color: var(--kl-blue); }
+
+        /* NAVIGATION */
         nav {
             background: #ffffff;
             border-bottom: 3px solid var(--kl-blue);
@@ -66,10 +82,19 @@
             font-weight: 700;
             margin-left: 25px;
             font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover, .dropdown:hover .dropbtn {
+            color: var(--kl-blue);
         }
 
         /* DROPDOWN LOGIC */
-        .dropdown { position: relative; display: inline-block; }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
         .dropdown-content {
             display: none;
             position: absolute;
@@ -82,6 +107,7 @@
             left: 25px;
             padding: 10px 0;
         }
+
         .dropdown-content a {
             color: var(--kl-dark);
             padding: 12px 20px;
@@ -90,9 +116,11 @@
             font-size: 1rem;
             border-bottom: 1px solid #eee;
         }
+
+        .dropdown-content a:last-child { border-bottom: none; }
         .dropdown:hover .dropdown-content { display: block; }
 
-        /* UNVERSAL SECTION STYLING */
+        /* UNIVERSAL SECTION STYLING */
         section {
             padding: 80px 10%;
             border-bottom: 1px solid #eee;
@@ -100,32 +128,121 @@
         }
 
         /* HERO SECTION */
-        .hero { text-align: center; background: linear-gradient(180deg, #fff 0%, var(--kl-light) 100%); }
-        .hero h1 { font-size: 3.5rem; color: #000; margin-bottom: 20px; }
-
-        /* --- PLACARD HIGHLIGHTING --- */
-        .kl-highlight {
-            border-top: 5px solid var(--kl-blue);
+        .hero {
+            text-align: center;
+            background: linear-gradient(180deg, #fff 0%, var(--kl-light) 100%);
         }
-        /* --------------------------- */
 
-        .feature-grid, .gallery-container, .donate-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 40px 0; }
-        .card, .gallery-item, .donate-card, .download-card {
-            flex: 1; min-width: 300px; max-width: 400px; padding: 40px;
-            background: #fff; border: 1px solid #eee; border-radius: 12px;
-            text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-        .gallery-item img { width: 100%; border-radius: 8px; border: 1px solid #ddd; }
+        .hero h1 { font-size: 3.5rem; color: #000; line-height: 1.2; }
+        .hero p { font-size: 1.4rem; color: #555; max-width: 800px; margin: 20px auto 40px; }
 
         /* BUTTONS */
         .btn {
-            display: inline-block; background: var(--kl-blue); color: white !important;
-            padding: 15px 35px; border-radius: 5px; text-decoration: none; font-weight: bold; margin: 10px;
+            display: inline-block;
+            background: var(--kl-blue);
+            color: white !important;
+            padding: 15px 35px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px;
         }
-        .btn-outline { background: transparent; color: var(--kl-blue) !important; border: 2px solid var(--kl-blue); }
 
-        footer { background: var(--kl-blue); color: white; text-align: center; padding: 60px 10%; }
-        footer a { color: white; text-decoration: none; margin: 0 10px; }
+        .btn-outline {
+            background: transparent;
+            color: var(--kl-blue) !important;
+            border: 2px solid var(--kl-blue);
+        }
+
+        /* FEATURE GRID */
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 50px 0;
+        }
+
+        .card {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            padding: 40px;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        /* SCREENSHOTS / GALLERY */
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 40px 0;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            flex: 1;
+            min-width: 350px;
+            max-width: 450px;
+            text-align: center;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-item p { margin-top: 15px; font-weight: 600; color: #555; }
+
+        /* DOWNLOAD CARDS */
+        .download-card {
+            background: var(--kl-light); 
+            padding: 40px; 
+            border-radius: 15px; 
+            border: 1px solid #ddd; 
+            min-width: 320px;
+            max-width: 450px;
+            flex: 1; 
+        }
+
+        /* DONATE CARDS */
+        .donate-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .donate-card {
+            flex: 1;
+            min-width: 300px;
+            max-width: 450px;
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        /* PLACARD HIGHLIGHT */
+        .kl-highlight {
+            border-top: 5px solid var(--kl-blue);
+        }
+
+        footer {
+            background: var(--kl-blue);
+            color: white;
+            text-align: center;
+            padding: 40px;
+        }
 
         /* ========================================= */
         /* PANCAKE MENU TOGGLE                       */
@@ -147,7 +264,7 @@
 
         /* MOBILE "PANCAKE" STYLES */
         @media (max-width: 768px) {
-            .hamburger-icon { display: block; }
+            .hamburger-icon { display: block; } 
 
             .nav-links {
                 display: none; 
@@ -252,15 +369,15 @@
         <div class="feature-grid">
             <div class="card kl-highlight">
                 <h3>Cryptographic Salt & Key Derivation</h3>
-                <p>We utilize PBKDF2 key derivation with a unique salt for every vault to mathematically shield against Brute-Force attacks.</p>
+                <p>We utilize PBKDF2 key derivation with a unique salt for every vault. This adds a mathematical shield against Brute-Force attacks.</p>
             </div>
             <div class="card kl-highlight">
                 <h3>Zero-Knowledge Security</h3>
-                <p>Your master password is the only key. We never have access to your data. You have absolute control.</p>
+                <p>Your master password is the only key. We don't have a "reset" button because we never have access to your data.</p>
             </div>
             <div class="card kl-highlight">
                 <h3>Fernet (AES) Encryption</h3>
-                <p>Your vault is locked behind industry-standard encryption, ensuring data remains unreadable to anyone but you.</p>
+                <p>Your vault is locked behind industry-standard encryption, ensuring your data remains unreadable to anyone but you.</p>
             </div>
         </div>
     </section>
@@ -308,7 +425,8 @@
             commercial cloud, we remove the incentive for hackers. Your vault is your own. Whether you keep it on a
             local machine, thumb drive, Google or Dropbox, you are the only one with the key.</p>
         <h3 style="margin: 30px 0 15px; color: var(--kl-blue);">Transparent & Open Source</h3>
-        <p>KeyLock is free to use, redistribute and open for inspection. You can review our source code on GitHub, where we also manage invites for our friends to act as beta testers. Get started today by visiting the User Manual.</p>
+        <p>KeyLock is free to use, redistribute and open for inspection. You can review our source code on GitHub or
+            get started today by visiting the User Manual.</p>
     </section>
 
     <section id="donate" style="text-align: center; background-color: var(--kl-light);">
@@ -340,11 +458,11 @@
         <p>We believe that security shouldn't be a subscription service or a cloud-based risk. This open-source edition
             was built for those who demand absolute control over their data.</p>
         <div style="margin-top: 20px;">
-            <a href="docs/Legal_Compliance.html">Privacy & Compliance</a> |
-            <a href="https://github.com/JTS12215/keylocksoftware.com">GitHub Source</a>
+            <a href="docs/Legal_Compliance.html" style="color: white; text-decoration: none; margin: 0 10px;">Privacy & Compliance</a> |
+            <a href="https://github.com/JTS12215/keylocksoftware.com" style="color: white; text-decoration: none; margin: 0 10px;">GitHub Source</a>
         </div>
         <p style="margin-top: 30px; font-size: 0.8rem; opacity: 0.7;">
-            &copy; 2026 John Stone dba KeyLock Software | GPLv3 License
+            &copy; 2026 John Stone dba KeyLock Software | Provided as-is under the GPLv3 License
         </p>
     </footer>
 

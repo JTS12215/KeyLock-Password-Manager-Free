@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [26.02.6.3] - 2026-06-11
+
+### Changed
+- **Project Lifecycle**
+  - **End of Life (EOL):** Officially transitioned the Free Legacy Edition to a legacy, unmaintained state. 
+  - **Repository Status:** Repository updated to Read-Only/Archived. No further code adjustments, bug fixes, or security patches will be issued for this branch.
+  - **Documentation:** Updated `README.md`, `CONTRIBUTING.md`, and `Changelog.md` to reflect project deprecation and outline user rights under the GPLv3 license.
+
 ## [26.02.6] - 2026-02-23
 
 ### Added
